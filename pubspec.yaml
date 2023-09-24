@@ -20,5 +20,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - lib/assets/
     - lib/assets/icons/
-    - lib/assets/fonts/
+  fonts:
+    - family: Assistant
+      fonts:
+        - asset: lib/assets/fonts/Assistant-Light.ttf
+          weight: 300
+        - asset: lib/assets/fonts/Assistant-Regular.ttf
+          weight: 400
+        - asset: lib/assets/fonts/Assistant-Medium.ttf
+          weight: 500
+        - asset: lib/assets/fonts/Assistant-SemiBold.ttf
+          weight: 600
+        - asset: lib/assets/fonts/Assistant-Bold.ttf
+          weight: 700
+        - asset: lib/assets/fonts/Assistant-ExtraBold.ttf
+          weight: 800
+        
