@@ -11,7 +11,7 @@ const double videoTitleSize =20;
 const double smallTextSize = 20;
 
 TextStyle generalTextStyle(double size) {
-  return TextStyle(color: textColor, fontSize: size);
+  return TextStyle(color: textColor, fontSize: size, fontFamily: "Assistant");
 }
 
 ThemeData appTheme = ThemeData(

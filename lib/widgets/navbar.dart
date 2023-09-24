@@ -28,6 +28,7 @@ class _NavigationSystemState extends State<NavigationSystem> {
       body: Center(child: _widgetOptions[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+
         onTap: (i) => setState(() {
           _selectedIndex = i;
         }),
@@ -38,6 +39,9 @@ class _NavigationSystemState extends State<NavigationSystem> {
           BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/settings-icon-filled.svg', height: 20),icon: SvgPicture.asset('lib/assets/icons/settings-icon.svg', height: 20), label: "Settings"),
         ],
          selectedItemColor: textColor,
+         unselectedItemColor: textColor.withOpacity(.6),
+         selectedFontSize: 12,
+         unselectedFontSize: 12,
         ),
     );
   }
