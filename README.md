@@ -1,3 +1,2 @@
-# off_the_hook
-
-A new Flutter project.
+# Off the Hook
+### A YouTube app designed to keep you off their hook. 

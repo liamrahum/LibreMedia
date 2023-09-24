@@ -24,7 +24,6 @@ class MainApp extends StatelessWidget {
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -32,9 +31,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-        child: Text("asdada")
-      
-    );
-  }
+    return Center(child: Text("AAAAAAA"));
+    }
 }
