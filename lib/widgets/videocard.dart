@@ -15,12 +15,12 @@ class VideoCard extends StatelessWidget {
       padding: const EdgeInsets.all(30),
       child: Column(children: [
         AspectRatio(aspectRatio: 16 / 9, child: Image.network(thumbnailURL, fit: BoxFit.fitWidth)),
-        Text(videoTitle, style: generalTextStyle(videoTitleSize, FontWeight.w700)),
+        Text(videoTitle, style: generalTextStyle(videoTitleSize, FontWeight.w700,1)),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(channelName, style: generalTextStyle(smallTextSize, FontWeight.w400)),
-            Text(views, style: generalTextStyle(smallTextSize, FontWeight.w400)),
+            Text(channelName, style: generalTextStyle(smallTextSize, FontWeight.w600,.6)),
+            Text(views, style: generalTextStyle(smallTextSize, FontWeight.w600,.6)),
           ],
         ),
       ]

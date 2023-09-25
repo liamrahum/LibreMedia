@@ -25,10 +25,11 @@ class _NavigationSystemState extends State<NavigationSystem> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: bgColor,
       body: Center(child: _widgetOptions[_selectedIndex]),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-
+        backgroundColor: bgColor,
         onTap: (i) => setState(() {
           _selectedIndex = i;
         }),

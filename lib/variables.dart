@@ -10,14 +10,16 @@ const double pageTitleSize =20;
 const double videoTitleSize =20;
 const double smallTextSize = 14;
 
-TextStyle generalTextStyle(double size, FontWeight weight) {
-  return TextStyle(color: textColor, fontSize: size, fontFamily: "Assistant", fontWeight: weight);
+TextStyle generalTextStyle(double size, FontWeight weight, double opacity) {
+  return TextStyle(color: textColor.withOpacity(opacity), fontSize: size, fontFamily: "Assistant", fontWeight: weight);
 }
 
 ThemeData appTheme = ThemeData(
     colorScheme: const ColorScheme.dark(background: bgColor, brightness: Brightness.dark, primary: primaryColor),
     textTheme: TextTheme(
-      bodyLarge: generalTextStyle(pageTitleSize, FontWeight.w700),
-      bodyMedium: generalTextStyle(videoTitleSize, FontWeight.w600),
-      bodySmall: generalTextStyle(smallTextSize, FontWeight.w400)),
+      bodyLarge: generalTextStyle(pageTitleSize, FontWeight.w700, 1),
+      bodyMedium: generalTextStyle(videoTitleSize, FontWeight.w600,1),
+      bodySmall: generalTextStyle(smallTextSize, FontWeight.w400,1)),
   );
+
+String invidiousAPI = "https://yt.oelrichsgarcia.de/api/v1/";
