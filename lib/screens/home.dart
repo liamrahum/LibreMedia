@@ -14,38 +14,16 @@ class _HomeState extends State<Home> {
   void initState() {
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Column(
         children: [
-          FutureBuilder<Video>(future: fetchVideo("ffnIL6hE__w"),builder: (context, snapshot) {
-            if(snapshot.hasData){
-              var data = snapshot.data!;
-              return VideoCard(thumbnailURL: data.thumbnailURL, videoTitle: data.title, channelName: "aa", views: data.viewCount);
-            }
-            else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-            else {
-              return const Text("Banana");
-            }
-            
-  },),
-  FutureBuilder<Video>(future: fetchVideo("WlFWxhmcxNQ"),builder: (context, snapshot) {
-            if(snapshot.hasData){
-              var data = snapshot.data!;
-              return VideoCard(thumbnailURL: data.thumbnailURL, videoTitle: data.title, channelName: "aa", views: data.viewCount);
-            }
-            else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-            else {
-              return const Text("Banana");
-            }
-  })
-  ],
-      )
+          FutureVideoCard(videoId: "WlFWxhmcxNQ"),
+          FutureVideoCard(videoId:"ffnIL6hE__w")
+        ],
+      ),
     );
   }
 }

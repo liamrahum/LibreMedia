@@ -2,27 +2,23 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:off_the_hook/variables.dart';
 
+int resolutionIndex = 3; // Max Resolution
 
-int resolutionIndex = 0; //Max Resolution
-class Video
-{
-  
+class Video {
   final String videoLink;
   final String title;
+  final String channelName;
   final String id;
   final String thumbnailURL;
   final int viewCount;
-  //final Bool isLive;
-  //final Bool isUpcoming;
 
   const Video({
     required this.videoLink,
     required this.title,
+    required this.channelName,
     required this.id,
     required this.thumbnailURL,
     required this.viewCount,
-    //required this.isLive,
-    //required this.isUpcoming
   });
 
   factory Video.fromJson(Map<String, dynamic> json) {
@@ -30,27 +26,20 @@ class Video
     return Video(
       videoLink: videoLinks.last['url'],
       title: json['title'],
+      channelName: json['author'],
       id: json['videoId'],
       thumbnailURL: json['videoThumbnails'][resolutionIndex]['url'],
       viewCount: json['viewCount'],
-      //isLive: json['liveNow'],
-      //isUpcoming: json['isUpcoming']
     );
   }
-  
 }
 
-Future<Video> fetchVideo(String videoId) async {
+Future<Video> fetchVideoData(String videoId) async {
   final response = await http.get(Uri.parse('${invidiousAPI}videos/$videoId'));
 
   if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.    
-    return Video.fromJson(jsonDecode(response.body)); 
+    return Video.fromJson(jsonDecode(response.body));
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
     throw Exception('Failed to load album');
   }
 }
-

@@ -26,7 +26,7 @@ class _NavigationSystemState extends State<NavigationSystem> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bgColor,
-      body: Center(child: _widgetOptions[_selectedIndex]),
+      body: IndexedStack(index: _selectedIndex, children: _widgetOptions),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: bgColor,
