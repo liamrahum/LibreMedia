@@ -7,7 +7,7 @@ class VideoCard extends StatelessWidget {
   final String thumbnailURL;
   final String videoTitle;
   final String channelName;
-  final String views;
+  final int views;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class VideoCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(channelName, style: generalTextStyle(smallTextSize, FontWeight.w600,.6)),
-            Text(views, style: generalTextStyle(smallTextSize, FontWeight.w600,.6)),
+            Text(views.toString(), style: generalTextStyle(smallTextSize, FontWeight.w600,.6)),
           ],
         ),
       ]
