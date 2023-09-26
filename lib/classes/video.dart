@@ -5,31 +5,35 @@ import 'package:off_the_hook/variables.dart';
 int resolutionIndex = 3; // Max Resolution
 
 class Video {
-  final String videoLink;
+  final String videoURL;
   final String title;
   final String channelName;
   final String id;
   final String thumbnailURL;
   final int viewCount;
 
+  final String videoDescription;
+
   const Video({
-    required this.videoLink,
+    required this.videoURL,
     required this.title,
     required this.channelName,
     required this.id,
     required this.thumbnailURL,
     required this.viewCount,
+    required this.videoDescription
   });
 
   factory Video.fromJson(Map<String, dynamic> json) {
     var videoLinks = json['formatStreams'];
     return Video(
-      videoLink: videoLinks.last['url'],
+      videoURL: videoLinks.last['url'],
       title: json['title'],
       channelName: json['author'],
       id: json['videoId'],
       thumbnailURL: json['videoThumbnails'][resolutionIndex]['url'],
       viewCount: json['viewCount'],
+      videoDescription: json['description']
     );
   }
 }

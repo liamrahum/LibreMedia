@@ -1,5 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
+import 'package:off_the_hook/variables.dart';
 
 class VideoPlaying extends StatelessWidget {
   const VideoPlaying({
@@ -10,21 +11,20 @@ class VideoPlaying extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  double videoHeight = MediaQuery.of(context).size.height * 0.25;
-
+  double videoWidth = MediaQuery.of(context).size.width *.93;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
-          width: videoHeight * 16 / 9,
-          height: videoHeight,
+          width: videoWidth,
+          height: videoWidth*9/16,
           child: FutureBuilder(
             future: controller,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Chewie(controller: snapshot.data!);
               } else {
-                return const Text("Error loading video");
+                return const LinearProgressIndicator(color: primaryColor, backgroundColor: bgColor);
               }
             },
           ),

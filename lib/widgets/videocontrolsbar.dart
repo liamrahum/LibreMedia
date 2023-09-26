@@ -20,7 +20,7 @@ class _VideoControlsBarState extends State<VideoControlsBar> {
       future: widget.controller,
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
-          return const Text("Error");
+          return const Text("");
         }
         var controller = snapshot.data!;
         return Padding(

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:off_the_hook/screens/screens.dart';
 import 'package:off_the_hook/variables.dart';
-
+import 'package:off_the_hook/classes/video.dart';
 class NavigationSystem extends StatefulWidget {
   const NavigationSystem({
     super.key,
@@ -16,7 +16,6 @@ class NavigationSystem extends StatefulWidget {
 class _NavigationSystemState extends State<NavigationSystem> {
    static const List<Widget> _widgetOptions = <Widget>[
     Home(),
-    PlayingNow(),
     History(),
     Settings()
   ];
@@ -39,7 +38,6 @@ class _NavigationSystemState extends State<NavigationSystem> {
           currentIndex: _selectedIndex,
           items: [
             BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/home-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/home-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.play_arrow), label: "PN"),
             BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/history-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/history-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "History"),
             BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/settings-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/settings-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "Settings"),
           ],
