@@ -38,10 +38,10 @@ class _NavigationSystemState extends State<NavigationSystem> {
           }),
           currentIndex: _selectedIndex,
           items: [
-            BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/home-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/home-icon.svg', height: 20), label: "Home"),
+            BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/home-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/home-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "Home"),
             BottomNavigationBarItem(icon: Icon(Icons.play_arrow), label: "PN"),
-            BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/history-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/history-icon.svg', height: 20), label: "History"),
-            BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/settings-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/settings-icon.svg', height: 20), label: "Settings"),
+            BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/history-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/history-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "History"),
+            BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/settings-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/settings-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "Settings"),
           ],
            selectedItemColor: textColor,
            unselectedItemColor: textColor.withOpacity(.6),

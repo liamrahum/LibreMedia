@@ -1,5 +1,6 @@
+// ignore_for_file: prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/widgets/widgets.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,12 +18,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-        children: [
-          FutureVideoCard(videoId: "WlFWxhmcxNQ"),
-          FutureVideoCard(videoId:"ffnIL6hE__w"),
-          FutureVideoCard(videoId: "5Irm9R615Zk"),
-          FutureVideoCard(videoId: "z9XWN7u8mSU"),
-        ],
+        children: [],
     );
   }
 }
