@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/classes/video.dart';
 import 'package:off_the_hook/widgets/widgets.dart';
 
 class Home extends StatefulWidget {
