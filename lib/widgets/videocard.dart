@@ -6,16 +6,18 @@ import 'package:off_the_hook/classes/video.dart';
 class VideoCard extends StatelessWidget {
   const VideoCard({
     super.key,
-    required this.thumbnailURL,
     required this.videoTitle,
     required this.channelName,
     required this.views,
+    this.displayThumbnail = true,
+    this.thumbnailURL = ""
   });
 
   final String thumbnailURL;
   final String videoTitle;
   final String channelName;
   final int views;
+  final bool displayThumbnail;
 
   @override
   Widget build(BuildContext context) {
@@ -23,10 +25,12 @@ class VideoCard extends StatelessWidget {
       padding: const EdgeInsets.all(30),
       child: Column(
         children: [
-          AspectRatio(
-            aspectRatio: 16 / 9,
-            child: Image.network(thumbnailURL, fit: BoxFit.fitWidth),
-          ),
+          if(displayThumbnail)...[
+            AspectRatio(
+              aspectRatio: 16 / 9,
+              child: Image.network(thumbnailURL, fit: BoxFit.fitWidth),
+            )
+          ],
           Text(
             videoTitle,
             style: generalTextStyle(videoTitleSize, FontWeight.w700, 1),
@@ -56,7 +60,7 @@ class VideoCard extends StatelessWidget {
 class FutureVideoCard extends StatelessWidget {
   const FutureVideoCard({super.key,required this.videoId});
   final String videoId;
-
+  
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Video>(

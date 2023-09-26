@@ -17,13 +17,13 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
+    return ListView(
         children: [
           FutureVideoCard(videoId: "WlFWxhmcxNQ"),
-          FutureVideoCard(videoId:"ffnIL6hE__w")
+          FutureVideoCard(videoId:"ffnIL6hE__w"),
+          FutureVideoCard(videoId: "5Irm9R615Zk"),
+          FutureVideoCard(videoId: "z9XWN7u8mSU"),
         ],
-      ),
     );
   }
 }
