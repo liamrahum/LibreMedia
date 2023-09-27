@@ -11,7 +11,7 @@ class VideoPlaying extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  double videoWidth = MediaQuery.of(context).size.width *.93;
+  double videoWidth = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

@@ -17,7 +17,7 @@ Future<ChewieController> getVideoController(String vidURL) async {
     looping: false,
     showControlsOnInitialize: false,
     allowMuting: false,
-    showOptions: false,
+    showOptions: false
   );
   return chewieController;
 }
@@ -45,26 +45,19 @@ class PlayingNow extends StatelessWidget {
     catch(e){
       return Text("Error loading video2", style: generalTextStyle(bigTitleSize, FontWeight.w700, 1));
     }
-   return Padding(
-     padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.03),
-     child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            VideoPlaying(controller: videoController),
-            const SizedBox(height: 10),
-            Text(videoTitle, style: generalTextStyle(bigTitleSize, FontWeight.w700, 1)),
-            const SizedBox(height: 5),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(channelName, style: generalTextStyle(16, FontWeight.w500, 1)),
-                Text("$views views", style: generalTextStyle(16, FontWeight.w500, 1)),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Expanded(child: SingleChildScrollView(scrollDirection: Axis.vertical, child: Text(videoDescription, style: generalTextStyle(18, FontWeight.w600, 1),))),
-            VideoControlsBar(controller: videoController),
-          ]),
+   return Column(
+      children: [
+        VideoPlaying(controller: videoController),
+
+        Text(videoTitle, style: generalTextStyle(bigTitleSize, FontWeight.w700, 1), textAlign: TextAlign.start,),
+        Text(channelName, style: generalTextStyle(16, FontWeight.w500, 1)),
+        
+        Expanded(child: SingleChildScrollView(scrollDirection: Axis.vertical, child: Text(videoDescription, style: generalTextStyle(18, FontWeight.w600, 1),))),
+        Text("You're one of $views viewers", style: generalTextStyle(16, FontWeight.w500, 1)),
+        
+        VideoControlsBar(controller: videoController),
+        
+      ]
    );
   }
 }
