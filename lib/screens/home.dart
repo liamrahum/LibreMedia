@@ -20,7 +20,8 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return ListView(
         children: [
-          FutureVideoCard(videoId: "itObaG5mFlU")
+          FutureVideoCard(videoId: "itObaG5mFlU"),
+          FutureVideoCard(videoId: "SLzS_8uITDI"),
         ],
     );
   }
