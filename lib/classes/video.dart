@@ -40,9 +40,9 @@ class Video {
 
 Future<Video> fetchVideoData(String videoId) async {
   final response = await http.get(Uri.parse('${invidiousAPI}videos/$videoId'));
-
+  var responseBody = utf8.decode(response.bodyBytes);
   if (response.statusCode == 200) {
-    return Video.fromJson(jsonDecode(response.body));
+    return Video.fromJson(jsonDecode(responseBody));
   } else {
     throw Exception('Failed to load album');
   }
