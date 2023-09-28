@@ -30,7 +30,7 @@ class VideoCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(30),
       child: GestureDetector(
-        onTap: () => Navigator.of(context).push(
+        onTap: () async => await Navigator.of(context).push(
     MaterialPageRoute(
       builder: (context) => Scaffold(
       appBar: AppBar(shadowColor: Colors.transparent),
@@ -100,7 +100,7 @@ class FutureVideoCard extends StatelessWidget {
         } 
         else
         {
-          return const Text("");
+          return const LinearProgressIndicator();
         }
       },
     );

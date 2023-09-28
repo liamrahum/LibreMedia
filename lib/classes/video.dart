@@ -41,9 +41,28 @@ class Video {
 Future<Video> fetchVideoData(String videoId) async {
   final response = await http.get(Uri.parse('${invidiousAPI}videos/$videoId'));
   var responseBody = utf8.decode(response.bodyBytes);
-  if (response.statusCode == 200) {
-    return Video.fromJson(jsonDecode(responseBody));
-  } else {
-    throw Exception('Failed to load album');
+  if (response.statusCode != 200) {
+    throw Exception('Failed to load video');
   }
+  return Video.fromJson(jsonDecode(responseBody));
+}
+
+Future<List<String>> fetchVideoList(String query)  async {
+  List<String> videos = [];
+  if(query=="")return videos;
+  
+  final response = await http.get(Uri.parse('${invidiousAPI}search?q=$query&type=video'));
+  var responseBody = utf8.decode(response.bodyBytes);
+  if (response.statusCode != 200) {
+    throw Exception('Failed to load videos');
+  }
+  
+  int i = 0;
+  List jsonBody = jsonDecode(responseBody);
+  
+  for(i = 0; i < (jsonBody.length < 5 ? jsonBody.length : 5);i++)
+  {
+    videos.add(jsonBody[i]["videoId"]);
+  }
+  return videos;
 }
