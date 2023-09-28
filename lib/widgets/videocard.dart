@@ -23,19 +23,18 @@ class DummyVideoCard extends StatelessWidget {
                 ),
               )
             ],
-            SizedBox(height: 8,),
-            SizedBox(
+            const SizedBox(height: 8),
+            const SizedBox(
               width : 220,
               height: 10,
               child: ColoredBox(color: Colors.white60),
               ),
-            SizedBox(height: 8,),
-            SizedBox(
+            const SizedBox(height: 8),
+            const SizedBox(
               width : 200,
               height: 2,
               child: ColoredBox(color: Colors.white60),
               ),
-           
           ],
           crossAxisAlignment: CrossAxisAlignment.start,
         ),
