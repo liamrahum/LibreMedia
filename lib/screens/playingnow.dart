@@ -7,8 +7,7 @@ import 'package:off_the_hook/widgets/videocontrolsbar.dart';
 
 Future<ChewieController> getVideoController(String vidURL) async {
   final videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(vidURL));
-  await videoPlayerController.initialize();
-
+  try {await videoPlayerController.initialize();}catch(e){}
   final chewieController = ChewieController(
     materialProgressColors: ChewieProgressColors(backgroundColor: Colors.transparent, playedColor: Colors.blue),
     cupertinoProgressColors: ChewieProgressColors(backgroundColor: Colors.transparent, playedColor: Colors.blue),
@@ -45,10 +44,12 @@ class PlayingNow extends StatelessWidget {
     catch(e){
       return Text("Error loading video2", style: generalTextStyle(bigTitleSize, FontWeight.w700, 1));
     }
+
+    
    return Column(
       children: [
         VideoPlaying(controller: videoController),
-
+          BackButton(onPressed:()=> Navigator.of(context).pop()),
         Text(videoTitle, style: generalTextStyle(bigTitleSize, FontWeight.w700, 1), textAlign: TextAlign.start,),
         Text(channelName, style: generalTextStyle(16, FontWeight.w500, 1)),
         
@@ -56,7 +57,6 @@ class PlayingNow extends StatelessWidget {
         Text("You're one of $views viewers", style: generalTextStyle(16, FontWeight.w500, 1)),
         
         VideoControlsBar(controller: videoController),
-        
       ]
    );
   }
