@@ -33,7 +33,7 @@ class _NavigationSystemState extends State<NavigationSystem> {
           data: ThemeData(splashColor: Colors.transparent, highlightColor: Colors.transparent),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: bgColor,
+            backgroundColor: Color.fromARGB(255, 23, 23, 23),
             onTap: (i) => setState(() {
               _selectedIndex = i;
             }),

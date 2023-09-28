@@ -13,7 +13,7 @@ class Video {
   final int viewCount;
 
   final String videoDescription;
-
+  final String publishedText;
   const Video({
     required this.videoURL,
     required this.title,
@@ -21,7 +21,8 @@ class Video {
     required this.id,
     required this.thumbnailURL,
     required this.viewCount,
-    required this.videoDescription
+    required this.videoDescription,
+    required this.publishedText
   });
 
   factory Video.fromJson(Map<String, dynamic> json) {
@@ -33,7 +34,8 @@ class Video {
       id: json['videoId'],
       thumbnailURL: json['videoThumbnails'][resolutionIndex]['url'],
       viewCount: json['viewCount'],
-      videoDescription: json['description']
+      videoDescription: json['description'],
+      publishedText: json['publishedText']
     );
   }
 }

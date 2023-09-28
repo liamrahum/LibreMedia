@@ -4,6 +4,44 @@ import 'package:flutter/material.dart';
 import 'package:off_the_hook/screens/screens.dart';
 import 'package:off_the_hook/variables.dart';
 import 'package:off_the_hook/classes/video.dart';
+
+class DummyVideoCard extends StatelessWidget {
+  const DummyVideoCard({super.key,required this.displayThumbnail});
+  final bool displayThumbnail;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(25),
+        child: Column(
+          children: [
+            if(displayThumbnail)...[
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Container(color: Colors.grey[800]),
+                ),
+              )
+            ],
+            SizedBox(height: 8,),
+            SizedBox(
+              width : 220,
+              height: 10,
+              child: ColoredBox(color: Colors.white60),
+              ),
+            SizedBox(height: 8,),
+            SizedBox(
+              width : 200,
+              height: 2,
+              child: ColoredBox(color: Colors.white60),
+              ),
+           
+          ],
+          crossAxisAlignment: CrossAxisAlignment.start,
+        ),
+    );
+  }
+}
 class VideoCard extends StatelessWidget {
   const VideoCard({
     super.key,
@@ -13,7 +51,8 @@ class VideoCard extends StatelessWidget {
     this.displayThumbnail = true,
     this.thumbnailURL = "",
     this.videoURL = "",
-    this.videoDescription = ""
+    this.videoDescription = "",
+    this.publishedText = ""
   });
 
   final String thumbnailURL;
@@ -21,14 +60,15 @@ class VideoCard extends StatelessWidget {
   final String channelName;
   final int views;
   final bool displayThumbnail;
-  
+  final String publishedText;
+
   final String videoDescription;
   final String videoURL;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(30),
+      padding: const EdgeInsets.all(25),
       child: GestureDetector(
         onTap: () async => await Navigator.of(context).push(
     MaterialPageRoute(
@@ -41,28 +81,23 @@ class VideoCard extends StatelessWidget {
         child: Column(
           children: [
             if(displayThumbnail)...[
-              AspectRatio(
-                aspectRatio: 16 / 9,
-                child: Image.network(thumbnailURL, fit: BoxFit.fitWidth),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: Image.network(thumbnailURL, fit: BoxFit.fitWidth),
+                ),
               )
             ],
             Text(
               videoTitle,
               style: generalTextStyle(videoTitleSize, FontWeight.w700, 1),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  channelName,
+            Text(
+                  "$channelName  •  $views views  •  $publishedText",
                   style: generalTextStyle(smallTextSize, FontWeight.w600, 0.6),
                 ),
-                Text(
-                  "$views views",
-                  style: generalTextStyle(smallTextSize, FontWeight.w600, 0.6),
-                ),
-              ],
-            ),
+           
           ],
           crossAxisAlignment: CrossAxisAlignment.start,
         ),
@@ -92,7 +127,8 @@ class FutureVideoCard extends StatelessWidget {
             views: data.viewCount,
             videoDescription: data.videoDescription,
             videoURL: data.videoURL,
-          );
+            publishedText: data.publishedText,
+          ); 
         } 
         else if (snapshot.hasError) 
         {
@@ -100,9 +136,10 @@ class FutureVideoCard extends StatelessWidget {
         } 
         else
         {
-          return const LinearProgressIndicator();
+          return const DummyVideoCard(displayThumbnail: true);
         }
       },
     );
   }
 }
+

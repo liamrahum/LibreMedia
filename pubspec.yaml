@@ -14,6 +14,7 @@ dependencies:
   flutter_svg: ^2.0.7
   http: ^1.1.0
   localstorage: ^4.0.1+4
+  shared_preferences: ^2.2.1
   video_player: ^2.7.2
 
 dev_dependencies:
