@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:off_the_hook/variables.dart';
 import 'package:off_the_hook/widgets/videoplaying.dart';
@@ -8,8 +6,7 @@ import 'package:chewie/chewie.dart';
 import 'package:off_the_hook/widgets/videocontrolsbar.dart';
 
 Future<ChewieController> getVideoController(String vidURL) async {
-  print(vidURL);
-  final videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(vidURL));  
+  final videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(vidURL));
   await videoPlayerController.initialize();
 
   final chewieController = ChewieController(
