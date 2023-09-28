@@ -51,7 +51,7 @@ Future<List<String>> fetchVideoList(String query)  async {
   List<String> videos = [];
   if(query=="")return videos;
   
-  final response = await http.get(Uri.parse('${invidiousAPI}search?q=$query'));
+  final response = await http.get(Uri.parse('${invidiousAPI}search?q=$query&type=video'));
   var responseBody = utf8.decode(response.bodyBytes);
   if (response.statusCode != 200) {
     throw Exception('Failed to load videos');
@@ -60,9 +60,8 @@ Future<List<String>> fetchVideoList(String query)  async {
   int i = 0;
   List jsonBody = jsonDecode(responseBody);
   
-  for(i = 0; i < 5 || i >= jsonBody.length - 1;i++)
+  for(i = 0; i < (jsonBody.length < 5 ? jsonBody.length : 5);i++)
   {
-    if(jsonBody[i]["type"] == "channel")continue;
     videos.add(jsonBody[i]["videoId"]);
   }
   return videos;

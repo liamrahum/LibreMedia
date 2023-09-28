@@ -22,11 +22,17 @@ class _HomeState extends State<Home> {
     
     return ListView(
         children: [
-          TextField(onSubmitted: (prompt) => Navigator.push(context, MaterialPageRoute(builder: (context) => Scaffold(
-            body: ListView.builder(itemCount: 5, itemBuilder: (context, index) {
-                return FutureVideoCard(videoId: "J86eDJMKCKI");
+
+          TextField(onSubmitted: (prompt) async {
+            List<String> list = await fetchVideoList(prompt);
+            Navigator.push(context, MaterialPageRoute(builder: (context) => Scaffold(
+            body: ListView.builder(itemCount: list.length, itemBuilder: (context, index) {
+                return FutureVideoCard(videoId: list[index]);
             }),
-          ))))
+          )));
+          }),
+          FutureVideoCard(videoId: "J86eDJMKCKI"),
+
         ],
     );
   }
