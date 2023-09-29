@@ -73,27 +73,39 @@ class SearchBar extends StatelessWidget {
                   shadowColor: Colors.transparent,
                   title: const Text("Search results"),
                 ),
-                body: FutureBuilder(
-                  future: fetchVideoList(prompt),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        addAutomaticKeepAlives: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          return FutureVideoCard(videoId: snapshot.data![index]);
-                        },
-                      );
-                    } 
-                    else if (snapshot.hasError) return const Text("Error loading videos");
-                    else return const LinearProgressIndicator();
-                  },
-                ),
+                body: SearchResultVideoCards(prompt: prompt),
               ),
             ),
           );
         },
       ),
+    );
+  }
+}
+
+class SearchResultVideoCards extends StatelessWidget {
+  const SearchResultVideoCards({
+    super.key,
+    required this.prompt
+  });
+  final String prompt;
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: fetchVideoList(prompt),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            addAutomaticKeepAlives: true,
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              return FutureVideoCard(videoId: snapshot.data![index]);
+            },
+          );
+        } 
+        else if (snapshot.hasError) return const Text("Error loading videos");
+        else return const LinearProgressIndicator();
+      },
     );
   }
 }
