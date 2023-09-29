@@ -70,5 +70,3 @@ Future<List<String>> fetchVideoList(String query)  async {
 }
 
 
-//TODO: fetchChannelVideos - gets channel name and returns list of video IDs
-//TODO: randomize search results

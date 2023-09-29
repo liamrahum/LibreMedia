@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:off_the_hook/classes/video.dart';
 import 'package:off_the_hook/variables.dart';
+import 'package:off_the_hook/widgets/channel-card.dart';
 import 'package:off_the_hook/widgets/video-card.dart';
 
 class Home extends StatefulWidget {
@@ -27,6 +28,7 @@ class _HomeState extends State<Home> {
     return ListView(
       children: [
         const SearchBar(),
+        const FutureChannelCard(channelID: "UCg6gPGh8HU2U01vaFCAsvmQ"),
         const FutureVideoCard(videoId: "fVDQ8iNBIos"),
         const FutureVideoCard(videoId: "fVDQ8iNBIos"),
       ],

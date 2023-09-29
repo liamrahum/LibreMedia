@@ -128,7 +128,7 @@ class FutureVideoCard extends StatelessWidget {
           ); 
         } 
         else if (snapshot.hasError) return Text('${snapshot.error}');
-        else return const DummyVideoCard(displayThumbnail: true);
+        return const DummyVideoCard(displayThumbnail: true);
       },
     );
   }
