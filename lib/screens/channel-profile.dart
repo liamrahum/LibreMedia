@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//TODO: add pages to see channel history.
+
 class ChannelProfile extends StatelessWidget {
   const ChannelProfile({super.key});
 
