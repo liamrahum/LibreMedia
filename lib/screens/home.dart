@@ -13,9 +13,6 @@ class Home extends StatefulWidget {
   State<Home> createState() => _HomeState();
 }
 
-
-
-
 class _HomeState extends State<Home> {
   @override
   void initState() {
@@ -24,7 +21,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    
     return ListView(
       children: [
         const SearchBar(),
@@ -44,7 +40,8 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*.04),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * .04),
       child: TextField(
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -86,10 +83,7 @@ class SearchBar extends StatelessWidget {
 }
 
 class SearchResultVideoCards extends StatelessWidget {
-  const SearchResultVideoCards({
-    super.key,
-    required this.prompt
-  });
+  const SearchResultVideoCards({super.key, required this.prompt});
   final String prompt;
   @override
   Widget build(BuildContext context) {
@@ -104,9 +98,10 @@ class SearchResultVideoCards extends StatelessWidget {
               return FutureVideoCard(videoId: snapshot.data![index]);
             },
           );
-        } 
-        else if (snapshot.hasError) return const Text("Error loading videos");
-        else return const LinearProgressIndicator();
+        } else if (snapshot.hasError)
+          return const Text("Error loading videos");
+        else
+          return const LinearProgressIndicator();
       },
     );
   }

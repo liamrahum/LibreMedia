@@ -5,6 +5,8 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text("Caa"),);
+    return const Center(
+      child: Text("Caa"),
+    );
   }
 }

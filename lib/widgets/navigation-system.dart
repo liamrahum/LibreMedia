@@ -14,13 +14,13 @@ class NavigationSystem extends StatefulWidget {
 }
 
 class _NavigationSystemState extends State<NavigationSystem> {
-   static const List<Widget> _widgetOptions = <Widget>[
+  static const List<Widget> _widgetOptions = <Widget>[
     Home(),
     History(),
     Settings()
   ];
   int _selectedIndex = 0;
-  
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -30,7 +30,9 @@ class _NavigationSystemState extends State<NavigationSystem> {
         backgroundColor: bgColor,
         body: IndexedStack(index: _selectedIndex, children: _widgetOptions),
         bottomNavigationBar: Theme(
-          data: ThemeData(splashColor: Colors.transparent, highlightColor: Colors.transparent),
+          data: ThemeData(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent),
           child: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
             backgroundColor: Color.fromARGB(255, 23, 23, 23),
@@ -39,15 +41,39 @@ class _NavigationSystemState extends State<NavigationSystem> {
             }),
             currentIndex: _selectedIndex,
             items: [
-              BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/home-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/home-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "Home"),
-              BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/history-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/history-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "History"),
-              BottomNavigationBarItem(activeIcon: SvgPicture.asset('lib/assets/icons/settings-icon-filled.svg', height: 20), icon: SvgPicture.asset('lib/assets/icons/settings-icon.svg', height: 20, colorFilter: ColorFilter.mode(Colors.white.withOpacity(.6), BlendMode.srcIn)), label: "Settings"),
+              BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                      'lib/assets/icons/home-icon-filled.svg',
+                      height: 20),
+                  icon: SvgPicture.asset('lib/assets/icons/home-icon.svg',
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                          Colors.white.withOpacity(.6), BlendMode.srcIn)),
+                  label: "Home"),
+              BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                      'lib/assets/icons/history-icon-filled.svg',
+                      height: 20),
+                  icon: SvgPicture.asset('lib/assets/icons/history-icon.svg',
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                          Colors.white.withOpacity(.6), BlendMode.srcIn)),
+                  label: "History"),
+              BottomNavigationBarItem(
+                  activeIcon: SvgPicture.asset(
+                      'lib/assets/icons/settings-icon-filled.svg',
+                      height: 20),
+                  icon: SvgPicture.asset('lib/assets/icons/settings-icon.svg',
+                      height: 20,
+                      colorFilter: ColorFilter.mode(
+                          Colors.white.withOpacity(.6), BlendMode.srcIn)),
+                  label: "Settings"),
             ],
-             selectedItemColor: textColor,
-             unselectedItemColor: textColor.withOpacity(.6),
-             selectedFontSize: 12,
-             unselectedFontSize: 12,
-            ),
+            selectedItemColor: textColor,
+            unselectedItemColor: textColor.withOpacity(.6),
+            selectedFontSize: 12,
+            unselectedFontSize: 12,
+          ),
         ),
       ),
     );

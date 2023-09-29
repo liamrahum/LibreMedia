@@ -9,15 +9,13 @@ void main() {
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
-  
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp(
-      theme: appTheme,
-      home: const NavigationSystem());
+    return MaterialApp(theme: appTheme, home: const NavigationSystem());
   }
 }
