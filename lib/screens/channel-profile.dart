@@ -36,6 +36,7 @@ class ChannelProfile extends StatelessWidget {
         const SizedBox(height: 15),
         Expanded(
           child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: latestVideosIDs.length,
             itemBuilder: (context, index) =>
                 FutureVideoCard(videoId: latestVideosIDs[index]),

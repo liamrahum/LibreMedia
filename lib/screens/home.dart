@@ -26,10 +26,12 @@ class _HomeState extends State<Home> {
         const SearchBar(),
         Expanded(
           child: ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               const FutureChannelCard(channelID: "UCg6gPGh8HU2U01vaFCAsvmQ"),
-              const FutureVideoCard(videoId: "fVDQ8iNBIos"),
-              const FutureVideoCard(videoId: "fVDQ8iNBIos"),
+              const FutureChannelCard(channelID: "UC5qDet6sa6rODi7t6wfpg8g"),
+              const FutureChannelCard(channelID: "UCux-_Fze30tFuI_5CArwSmg"),
+              
             ],
           ),
         ),

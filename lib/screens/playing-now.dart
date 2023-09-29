@@ -59,6 +59,7 @@ class PlayingNow extends StatelessWidget {
       Text(channelName, style: generalTextStyle(16, FontWeight.w500, 1)),
       Expanded(
           child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               scrollDirection: Axis.vertical,
               child: Text(
                 videoDescription,
