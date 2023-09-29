@@ -105,8 +105,6 @@ class VideoCard extends StatelessWidget {
   }
 }
 
-
-
 class FutureVideoCard extends StatelessWidget {
   const FutureVideoCard({super.key,required this.videoId});
   final String videoId;
@@ -129,14 +127,8 @@ class FutureVideoCard extends StatelessWidget {
             publishedText: data.publishedText,
           ); 
         } 
-        else if (snapshot.hasError) 
-        {
-          return Text('${snapshot.error}');
-        } 
-        else
-        {
-          return const DummyVideoCard(displayThumbnail: true);
-        }
+        else if (snapshot.hasError) return Text('${snapshot.error}');
+        else return const DummyVideoCard(displayThumbnail: true);
       },
     );
   }
