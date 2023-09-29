@@ -21,12 +21,18 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Column(
       children: [
         const SearchBar(),
-        const FutureChannelCard(channelID: "UCg6gPGh8HU2U01vaFCAsvmQ"),
-        const FutureVideoCard(videoId: "fVDQ8iNBIos"),
-        const FutureVideoCard(videoId: "fVDQ8iNBIos"),
+        Expanded(
+          child: ListView(
+            children: [
+              const FutureChannelCard(channelID: "UCg6gPGh8HU2U01vaFCAsvmQ"),
+              const FutureVideoCard(videoId: "fVDQ8iNBIos"),
+              const FutureVideoCard(videoId: "fVDQ8iNBIos"),
+            ],
+          ),
+        ),
       ],
     );
   }
