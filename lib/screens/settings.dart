@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/preferences.dart';
+import 'package:off_the_hook/settingsmanager.dart';
 
 Future<String> getText() async
 {
-  Preferences prefs = Preferences();
+  SettingsManager prefs = SettingsManager();
   return prefs.getInstanceAPI(); 
 }
 
