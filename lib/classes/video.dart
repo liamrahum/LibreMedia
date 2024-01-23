@@ -69,6 +69,26 @@ Future<List<String>> fetchVideoList(String query)  async {
   return videos;
 }
 
+Future<List<String>> fetchChannelVideos(String channelId) async
+{
+  List<String> videos = [];
+  if(channelId=="")return videos;
+  
+  final response = await http.get(Uri.parse('${invidiousAPI}channels/$channelId/videos'));      
+  var responseBody = utf8.decode(response.bodyBytes);
+  if (response.statusCode != 200) {
+    throw Exception('Failed to load channel');
+  }
+  
+  int i = 0;
+  List jsonBody = jsonDecode(responseBody);
+  
+  for(i = 0; i < (jsonBody.length < 5 ? jsonBody.length : 5);i++)
+  {
+    videos.add(jsonBody.videos[i]);
+  }
+  return videos;
+}
 
 //TODO: fetchChannelVideos - gets channel name and returns list of video IDs
 //TODO: randomize search results

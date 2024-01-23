@@ -22,4 +22,4 @@ ThemeData appTheme = ThemeData(
       bodySmall: generalTextStyle(smallTextSize, FontWeight.w400,1)),
   );
 
-String invidiousAPI = "https://yt.oelrichsgarcia.de/api/v1/";
+String invidiousAPI = "https://invidious.lunar.icu/api/v1/";
