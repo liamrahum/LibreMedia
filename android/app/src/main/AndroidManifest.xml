@@ -2,7 +2,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     
     <application
-        android:label="off_the_hook"
+        android:label="LibreMedia"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true">

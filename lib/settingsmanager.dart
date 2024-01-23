@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:off_the_hook/variables.dart';
+import 'package:LibreMedia/variables.dart';
 
 class SettingsManager{
   static final SettingsManager _instance = SettingsManager._internal();

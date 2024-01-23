@@ -1,5 +1,5 @@
-name: off_the_hook
-description: A YouTube app designed to keep you off their hook. 
+name: LibreMedia
+description: An alternative, cross-platform frontend to YouTube - using the Invidious API
 publish_to: 'none'
 version: 0.1.0
 

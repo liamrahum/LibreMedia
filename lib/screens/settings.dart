@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/variables.dart';
-import 'package:off_the_hook/settingsmanager.dart';
+import 'package:LibreMedia/variables.dart';
+import 'package:LibreMedia/settingsmanager.dart';
 
 Future<Map> getSettings() async {
   SettingsManager prefs = SettingsManager();

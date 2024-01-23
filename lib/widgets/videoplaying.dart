@@ -1,6 +1,6 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/variables.dart';
+import 'package:LibreMedia/variables.dart';
 
 class VideoPlaying extends StatelessWidget {
   const VideoPlaying({
