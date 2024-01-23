@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:off_the_hook/settingsmanager.dart';
 import 'package:off_the_hook/variables.dart';
 
 int resolutionIndex = 3; // Max Resolution
@@ -41,7 +42,7 @@ class Video {
 }
 
 Future<Video> fetchVideoData(String videoId) async {
-  final response = await http.get(Uri.parse('${invidiousAPI}videos/$videoId'));
+  final response = await http.get(Uri.parse('${await SettingsManager().getInstanceAPI()}videos/$videoId'));
   var responseBody = utf8.decode(response.bodyBytes);
   if (response.statusCode != 200) {
     throw Exception('Failed to load video');
@@ -53,7 +54,7 @@ Future<List<String>> fetchVideoList(String query)  async {
   List<String> videos = [];
   if(query=="")return videos;
   
-  final response = await http.get(Uri.parse('${invidiousAPI}search?q=$query&type=video'));
+  final response = await http.get(Uri.parse('${await SettingsManager().getInstanceAPI()}search?q=$query&type=video'));
   var responseBody = utf8.decode(response.bodyBytes);
   if (response.statusCode != 200) {
     throw Exception('Failed to load videos');
@@ -74,7 +75,7 @@ Future<List<String>> fetchChannelVideos(String channelId) async
   List<String> videos = [];
   if(channelId=="")return videos;
   
-  final response = await http.get(Uri.parse('${invidiousAPI}channels/$channelId/videos'));      
+  final response = await http.get(Uri.parse('${await SettingsManager().getInstanceAPI()}channels/$channelId/videos'));      
   var responseBody = utf8.decode(response.bodyBytes);
   if (response.statusCode != 200) {
     throw Exception('Failed to load channel');

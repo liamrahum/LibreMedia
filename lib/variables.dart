@@ -22,4 +22,9 @@ ThemeData appTheme = ThemeData(
       bodySmall: generalTextStyle(smallTextSize, FontWeight.w400,1)),
   );
 
-String invidiousAPI = "https://invidious.lunar.icu/api/v1/";
+
+/*----KEYS----*/ 
+String keyInstanceUsed = 'invidious_instnace';
+String keySaveHistory = 'saveHistory';
+String keyMaxTime = 'maxWatchTime';
+

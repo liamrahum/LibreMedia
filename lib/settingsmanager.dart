@@ -1,6 +1,5 @@
-import 'dart:convert';
-
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:off_the_hook/variables.dart';
 
 class SettingsManager{
   static final SettingsManager _instance = SettingsManager._internal();
@@ -11,33 +10,27 @@ class SettingsManager{
 
   SettingsManager._internal();
 
-  /*----KEYS----*/ 
-  static const String _keyInstanceUsed = 'invidious_instnace';
-  static const String _keySaveHistory = 'saveHistory';
-  static const String _keyMaxTime = 'maxWatchTime';
-
   Future<String> getInstanceAPI() async
   {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_keyInstanceUsed) ?? "Null";
+    return prefs.getString(keyInstanceUsed) ?? "Null";
   }
 
   Future<void> setInstanceAPI(String instanceURL) async
   {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(_keyInstanceUsed, instanceURL);
+    prefs.setString(keyInstanceUsed, instanceURL!);
   }
   
-    
   //Function below returns settings in Json form
-  Future<String> getAllSettings() async
+  Future<Map> getAllSettings() async
   {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     Map items = {};
-    items[_keyInstanceUsed] = prefs.getString(_keyInstanceUsed);
-    items[_keySaveHistory] = prefs.getBool(_keySaveHistory);
-    items[_keySaveHistory] = prefs.getInt(_keyMaxTime);
+    items[keyInstanceUsed] = prefs.getString(keyInstanceUsed) ?? "Null";
+    items[keySaveHistory] = prefs.getBool(keySaveHistory) ?? true;
+    items[keyMaxTime] = prefs.getInt(keyMaxTime) ?? 60;
 
-    return const JsonEncoder().convert(items); 
+    return items; 
   }
 }

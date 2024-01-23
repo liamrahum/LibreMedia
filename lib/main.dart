@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'variables.dart';
 import 'widgets/widgets.dart';
-import 'settingsmanager.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SettingsManager prefs= SettingsManager();
-  prefs.setInstanceAPI(invidiousAPI);
   runApp(const MainApp());
 }
 
