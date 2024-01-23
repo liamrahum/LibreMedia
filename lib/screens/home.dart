@@ -27,7 +27,7 @@ class _HomeState extends State<Home> {
     return ListView(
       children: [
         const SearchBar(),
-        const FutureVideoCard(videoId: "ldth0gZ0qbo")
+        //const FutureVideoCard(videoId: "ldth0gZ0qbo")
       ],
     );
   }
