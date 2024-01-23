@@ -1,4 +1,3 @@
-# Off the Hook
-### A YouTube app designed to keep you off their hook. 
-
-##### Note to self: the app doesn't work with YouTube channels classified as "topic" channels
+# LibreMedia
+### An alternative, Cross-platform frontend to YouTube - using the Invidious API
+##### The project currently focuses on mobile as there are no quality Invidious mobile apps, and it should be compiled for ios devices too.
