@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/variables.dart';
-import 'package:off_the_hook/widgets/videoplaying.dart';
+import 'package:LibreMedia/variables.dart';
+import 'package:LibreMedia/widgets/videoplaying.dart';
 import 'package:video_player/video_player.dart';
 import 'package:chewie/chewie.dart';
-import 'package:off_the_hook/widgets/videocontrolsbar.dart';
+import 'package:LibreMedia/widgets/videocontrolsbar.dart';
 
 Future<ChewieController> getVideoController(String vidURL) async {
   final videoPlayerController = VideoPlayerController.networkUrl(Uri.parse(vidURL));

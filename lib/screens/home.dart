@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, use_build_context_synchronously, curly_braces_in_flow_control_structures
 
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/classes/video.dart';
-import 'package:off_the_hook/variables.dart';
-import 'package:off_the_hook/widgets/videocard.dart';
+import 'package:LibreMedia/classes/video.dart';
+import 'package:LibreMedia/variables.dart';
+import 'package:LibreMedia/widgets/videocard.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});

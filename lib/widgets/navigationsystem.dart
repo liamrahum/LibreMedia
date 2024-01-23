@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:off_the_hook/screens/screens.dart';
-import 'package:off_the_hook/variables.dart';
+import 'package:LibreMedia/screens/screens.dart';
+import 'package:LibreMedia/variables.dart';
 
 class NavigationSystem extends StatefulWidget {
   const NavigationSystem({

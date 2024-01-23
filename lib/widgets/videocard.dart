@@ -1,9 +1,9 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:off_the_hook/screens/screens.dart';
-import 'package:off_the_hook/variables.dart';
-import 'package:off_the_hook/classes/video.dart';
+import 'package:LibreMedia/screens/screens.dart';
+import 'package:LibreMedia/variables.dart';
+import 'package:LibreMedia/classes/video.dart';
 
 class DummyVideoCard extends StatelessWidget {
   const DummyVideoCard({super.key,required this.displayThumbnail});
