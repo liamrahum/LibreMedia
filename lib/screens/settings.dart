@@ -1,11 +1,21 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/variables.dart';
 import 'package:LibreMedia/settingsmanager.dart';
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 
 Future<Map> getSettings() async {
   SettingsManager prefs = SettingsManager();
 
   return prefs.getAllSettings();
+}
+
+Future<List> getAllInstances() async {
+  return const JsonCodec()
+      .decode(await rootBundle.loadString('lib/assets/instances.json'));
 }
 
 class Settings extends StatefulWidget {
@@ -16,44 +26,39 @@ class Settings extends StatefulWidget {
 }
 
 class _SettingsState extends State<Settings> {
-  List<DropdownMenuItem<String>> get dropdownItems {
-    List<DropdownMenuItem<String>> menuItems = [
-      const DropdownMenuItem(
-          value: "https://invidious.lunar.icu/api/v1/",
-          child: Text("invidious.lunar.icu")),
-      const DropdownMenuItem(
-          value: "https://invidious.nerdvpn.de/api/v1/",
-          child: Text("invidious.nerdvpn.de")),
-      const DropdownMenuItem(
-          value: "https://iv.melmac.space/api/v1/",
-          child: Text("iv.melmac.space"))
-    ];
-    return menuItems;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Center(
       child: FutureBuilder(
           future: getSettings(),
           builder: (context, snapshot) {
-            return ListView(
-              
-              children: [
-                /*  //This was only for displaying the settingsr
-                Text(snapshot.data![keyInstanceUsed]),
-                Text(snapshot.data![keySaveHistory].toString()),
-                Text(snapshot.data![keyMaxTime].toString()),
-                */
-                Text("Select alternative Invidious server:", style: generalTextStyle(bigTitleSize, FontWeight.bold, 1),),
-                DropdownButton(
-                  items: dropdownItems,
-                  onChanged: (value) async {
-                    SettingsManager().setInstanceAPI(value!);
-                  },
-                )
-              ]
-            );
+            return ListView(children: [
+              Text(
+                "Select alternative Invidious server:",
+                style: generalTextStyle(bigTitleSize, FontWeight.bold, 1),
+              ),
+              FutureBuilder(
+                future: getAllInstances(),
+                builder: (context, snapshot) {
+                  List<DropdownMenuItem<String>> menuItems = [];
+
+                  snapshot.data?.forEach((element) =>
+                      (!element[0].toString().contains('onion') &&
+                              !element[0].toString().contains('i2p'))
+                          ? menuItems.add(DropdownMenuItem(
+                              value: "https://${element[0]}/api/v1/",
+                              child: Text(element[0]),
+                            ))
+                          : Void);
+                  return DropdownButton(
+                    items: menuItems,
+                    onChanged: (value) async {
+                      SettingsManager().setInstanceAPI(value!);
+                    },
+                  );
+                },
+              )
+            ]);
           }),
     );
   }

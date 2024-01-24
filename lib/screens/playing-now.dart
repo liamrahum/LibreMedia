@@ -44,7 +44,7 @@ class PlayingNow extends StatelessWidget {
     try {
       videoController = getVideoController(videoURL);
     } catch (e) {
-      return Text("Error loading video2",
+      return Text("Error loading video",
           style: generalTextStyle(bigTitleSize, FontWeight.w700, 1));
     }
 
