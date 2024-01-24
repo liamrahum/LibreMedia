@@ -32,4 +32,5 @@ ThemeData appTheme = ThemeData(
 String keyInstanceUsed = 'invidious_instnace';
 String keySaveHistory = 'saveHistory';
 String keyMaxTime = 'maxWatchTime';
+String keyDisableShorts = "disableShorts";
 

@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:LibreMedia/settingsmanager.dart';
-import 'package:LibreMedia/variables.dart';
 
 int resolutionIndex = 3; // Max Resolution
 

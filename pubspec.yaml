@@ -28,6 +28,7 @@ flutter:
   assets:
     - lib/assets/
     - lib/assets/icons/
+    - lib/assets/logos/
   fonts:
     - family: Assistant
       fonts:

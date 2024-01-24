@@ -13,7 +13,8 @@ class SettingsManager{
   Future<String> getInstanceAPI() async
   {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString(keyInstanceUsed) ?? "Null";
+    //Allow for fallback with instances
+    return prefs.getString(keyInstanceUsed) ?? "https://invidious.lunar.icu/api/v1/";
   }
 
   Future<void> setInstanceAPI(String instanceURL) async
@@ -27,10 +28,19 @@ class SettingsManager{
   {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     Map items = {};
-    items[keyInstanceUsed] = prefs.getString(keyInstanceUsed) ?? "Null";
+    items[keyInstanceUsed] = prefs.getString(keyInstanceUsed) ?? "https://invidious.lunar.icu/api/v1/";
     items[keySaveHistory] = prefs.getBool(keySaveHistory) ?? true;
+    items[keyDisableShorts] = prefs.getBool(keyDisableShorts) ?? false;
     items[keyMaxTime] = prefs.getInt(keyMaxTime) ?? 60;
 
     return items; 
+  }
+  Future<void> setAllSettings(Map settings) async
+  {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString(keyInstanceUsed, settings[keyInstanceUsed]);
+    prefs.setBool(keySaveHistory, settings[keySaveHistory]);
+    prefs.setBool(keyDisableShorts, settings[keyDisableShorts]);
+    prefs.setInt(keyMaxTime, settings[keyMaxTime]);
   }
 }

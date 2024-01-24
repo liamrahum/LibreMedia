@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:LibreMedia/settingsmanager.dart';
 import 'package:http/http.dart' as http;
-import 'package:LibreMedia/variables.dart';
 
 int resolutionIndex = 2; // Max Resolution
 int videosToFetch = 8;
