@@ -71,6 +71,8 @@ class SearchBar extends StatelessWidget {
           ),
         ),
         onSubmitted: (prompt) {
+          if(prompt.isEmpty)
+            return;
           Navigator.push(
             context,
             MaterialPageRoute(
