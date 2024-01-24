@@ -19,7 +19,7 @@ class SettingsManager{
   Future<void> setInstanceAPI(String instanceURL) async
   {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(keyInstanceUsed, instanceURL!);
+    prefs.setString(keyInstanceUsed, instanceURL);
   }
   
   //Function below returns settings in Json form
