@@ -47,7 +47,7 @@ class _SettingsState extends State<Settings> {
                               !element[0].toString().contains('i2p'))
                           ? menuItems.add(DropdownMenuItem(
                               value: "https://${element[0]}/api/v1/",
-                              child: Text(element[0]),
+                            child: Text("${element[1]["flag"]} ${element[0]}"),
                             ))
                           : Void);
                   return DropdownButton(
