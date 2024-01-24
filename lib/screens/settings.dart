@@ -37,29 +37,33 @@ class _SettingsState extends State<Settings> {
                 "Select alternative Invidious server:",
                 style: generalTextStyle(bigTitleSize, FontWeight.bold, 1),
               ),
-              FutureBuilder(
-                future: getAllInstances(),
-                builder: (context, snapshot) {
-                  List<DropdownMenuItem<String>> menuItems = [];
-
-                  snapshot.data?.forEach((element) =>
-                      (!element[0].toString().contains('onion') &&
-                              !element[0].toString().contains('i2p'))
-                          ? menuItems.add(DropdownMenuItem(
-                              value: "https://${element[0]}/api/v1/",
-                            child: Text("${element[1]["flag"]} ${element[0]}"),
-                            ))
-                          : Void);
-                  return DropdownButton(
-                    items: menuItems,
-                    onChanged: (value) async {
-                      SettingsManager().setInstanceAPI(value!);
-                    },
-                  );
-                },
-              )
+              instancesMenu()
             ]);
           }),
+    );
+  }
+
+  FutureBuilder<List<dynamic>> instancesMenu() {
+    return FutureBuilder(
+      future: getAllInstances(),
+      builder: (context, snapshot) {
+        List<DropdownMenuItem<String>> menuItems = [];
+
+        snapshot.data?.forEach((element) =>
+            (!element[0].toString().contains('onion') &&
+                    !element[0].toString().contains('i2p'))
+                ? menuItems.add(DropdownMenuItem(
+                    value: "https://${element[0]}/api/v1/",
+                    child: Text("${element[1]["flag"]} ${element[0]}"),
+                  ))
+                : Void);
+        return DropdownButton(
+          items: menuItems,
+          onChanged: (value) async {
+            SettingsManager().setInstanceAPI(value!);
+          },
+        );
+      },
     );
   }
 }
