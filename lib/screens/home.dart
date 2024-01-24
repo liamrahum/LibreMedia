@@ -3,7 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/classes/video.dart';
 import 'package:LibreMedia/variables.dart';
-import 'package:LibreMedia/widgets/videocard.dart';
+import 'package:LibreMedia/widgets/channel-card.dart';
+import 'package:LibreMedia/widgets/video-card.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -11,9 +12,6 @@ class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
 }
-
-
-
 
 class _HomeState extends State<Home> {
   @override
@@ -23,11 +21,20 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    
-    return ListView(
+    return Column(
       children: [
         const SearchBar(),
-        //const FutureVideoCard(videoId: "ldth0gZ0qbo")
+        Expanded(
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            children: [
+              const FutureChannelCard(channelID: "UCg6gPGh8HU2U01vaFCAsvmQ"),
+              const FutureChannelCard(channelID: "UC5qDet6sa6rODi7t6wfpg8g"),
+              const FutureChannelCard(channelID: "UCux-_Fze30tFuI_5CArwSmg"),
+              
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -41,7 +48,8 @@ class SearchBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*.04),
+      padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * .04),
       child: TextField(
         decoration: InputDecoration(
           border: InputBorder.none,
@@ -72,27 +80,37 @@ class SearchBar extends StatelessWidget {
                   shadowColor: Colors.transparent,
                   title: const Text("Search results"),
                 ),
-                body: FutureBuilder(
-                  future: fetchVideoList(prompt),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return ListView.builder(
-                        addAutomaticKeepAlives: true,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          return FutureVideoCard(videoId: snapshot.data![index]);
-                        },
-                      );
-                    } 
-                    else if (snapshot.hasError) return const Text("Error loading videos");
-                    else return const LinearProgressIndicator();
-                  },
-                ),
+                body: SearchResultVideoCards(prompt: prompt),
               ),
             ),
           );
         },
       ),
+    );
+  }
+}
+
+class SearchResultVideoCards extends StatelessWidget {
+  const SearchResultVideoCards({super.key, required this.prompt});
+  final String prompt;
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder(
+      future: fetchVideoList(prompt),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return ListView.builder(
+            addAutomaticKeepAlives: true,
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              return FutureVideoCard(videoId: snapshot.data![index]);
+            },
+          );
+        } else if (snapshot.hasError)
+          return const Text("Error loading videos");
+        else
+          return const LinearProgressIndicator();
+      },
     );
   }
 }

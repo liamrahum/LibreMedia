@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class VideoControlsBar extends StatefulWidget {
-  const VideoControlsBar({
-    super.key,
-    required this.controller
-  });
+  const VideoControlsBar({super.key, required this.controller});
   final Future<ChewieController> controller;
 
   @override
@@ -37,9 +34,10 @@ class _VideoControlsBarState extends State<VideoControlsBar> {
                       controller.togglePause();
                     }),
                     icon: SvgPicture.asset(
-                      controller.isPlaying ? "lib/assets/icons/pause.svg" : "lib/assets/icons/play.svg",
-                      height: 50
-                    ),
+                        controller.isPlaying
+                            ? "lib/assets/icons/pause.svg"
+                            : "lib/assets/icons/play.svg",
+                        height: 50),
                     splashColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                   ),
@@ -56,7 +54,9 @@ class _VideoControlsBarState extends State<VideoControlsBar> {
                   ),
                   IconButton(
                     onPressed: () => setState(() {
-                      controller.seekTo(controller.videoPlayerController.value.position - const Duration(seconds: 10));
+                      controller.seekTo(
+                          controller.videoPlayerController.value.position -
+                              const Duration(seconds: 10));
                     }),
                     icon: SvgPicture.asset(
                       "lib/assets/icons/arrow-left.svg",
@@ -67,7 +67,9 @@ class _VideoControlsBarState extends State<VideoControlsBar> {
                   ),
                   IconButton(
                     onPressed: () => setState(() {
-                      controller.seekTo(controller.videoPlayerController.value.position + const Duration(seconds: 10));
+                      controller.seekTo(
+                          controller.videoPlayerController.value.position +
+                              const Duration(seconds: 10));
                     }),
                     icon: SvgPicture.asset(
                       "lib/assets/icons/arrow-right.svg",

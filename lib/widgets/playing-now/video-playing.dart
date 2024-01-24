@@ -11,20 +11,21 @@ class VideoPlaying extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-  double videoWidth = MediaQuery.of(context).size.width;
+    double videoWidth = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           width: videoWidth,
-          height: videoWidth*9/16,
+          height: videoWidth * 9 / 16,
           child: FutureBuilder(
             future: controller,
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return Chewie(controller: snapshot.data!);
               } else {
-                return const LinearProgressIndicator(color: primaryColor, backgroundColor: bgColor);
+                return const LinearProgressIndicator(
+                    color: primaryColor, backgroundColor: bgColor);
               }
             },
           ),
