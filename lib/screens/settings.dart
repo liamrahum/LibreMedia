@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/variables.dart';
-import 'package:LibreMedia/settingsmanager.dart';
+import 'package:LibreMedia/classes/settings-manager.dart';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';

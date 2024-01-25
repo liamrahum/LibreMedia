@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:LibreMedia/classes/video.dart';
 import 'channel.dart';
-import 'package:LibreMedia/settingsmanager.dart';
+import 'package:LibreMedia/classes/settings-manager.dart';
 import 'package:http/http.dart' as http;
 
 Future<Video> fetchVideoData(String videoId) async {

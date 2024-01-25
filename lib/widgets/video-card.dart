@@ -70,19 +70,22 @@ class VideoCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(25),
       child: GestureDetector(
-        onTap: () async => await Navigator.of(context).push(
-          MaterialPageRoute(
-              builder: (context) => Scaffold(
-                    appBar: AppBar(shadowColor: Colors.transparent),
-                    backgroundColor: bgColor,
-                    body: PlayingNow(
-                        channelName: channelName,
-                        videoURL: videoURL,
-                        videoDescription: videoDescription,
-                        videoTitle: videoTitle,
-                        views: views),
-                  )),
-        ),
+        onTap: () async {
+                    
+          await Navigator.of(context).push(
+            MaterialPageRoute(
+                builder: (context) => Scaffold(
+                      appBar: AppBar(shadowColor: Colors.transparent),
+                      backgroundColor: bgColor,
+                      body: PlayingNow(
+                          channelName: channelName,
+                          videoURL: videoURL,
+                          videoDescription: videoDescription,
+                          videoTitle: videoTitle,
+                          views: views),
+                    )),
+          );
+        },
         child: Column(
           children: [
             if (displayThumbnail) ...[
