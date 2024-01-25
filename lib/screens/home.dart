@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
             List<String> channels = snapshot.data!.toList();
             return Expanded(
               child: ListView.builder(
-                physics: BouncingScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) =>
                     FutureChannelCard(channelID: channels[index]),
