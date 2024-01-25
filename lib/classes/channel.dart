@@ -1,7 +1,3 @@
-import 'dart:convert';
-import 'package:LibreMedia/settingsmanager.dart';
-import 'package:http/http.dart' as http;
-
 int resolutionIndex = 2; // Max Resolution
 int videosToFetch = 8;
 
@@ -52,13 +48,3 @@ class Channel {
   }
 }
 
-Future<Channel> fetchChannel(String videoId) async {
-  final response =
-      await http.get(Uri.parse('${await SettingsManager().getInstanceAPI()}channels/$videoId'));
-  var responseBody = utf8.decode(response.bodyBytes);
-  if (response.statusCode != 200) {
-    throw Exception('Failed to load video');
-  }
-  return Channel.fromJson(jsonDecode(responseBody));
-}
-//TODO: randomize search results

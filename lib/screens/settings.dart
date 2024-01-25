@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/variables.dart';
-import 'package:LibreMedia/settingsmanager.dart';
+import 'package:LibreMedia/classes/settings-manager.dart';
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
@@ -48,7 +48,11 @@ class _SettingsState extends State<Settings> {
       future: getAllInstances(),
       builder: (context, snapshot) {
         List<DropdownMenuItem<String>> menuItems = [];
-
+        if (!snapshot.hasData) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError){
+          return const Text("Error loading instances");
+        }
         snapshot.data?.forEach((element) =>
             (!element[0].toString().contains('onion') &&
                     !element[0].toString().contains('i2p'))

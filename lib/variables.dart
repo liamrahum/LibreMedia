@@ -33,4 +33,4 @@ String keyInstanceUsed = 'invidious_instnace';
 String keySaveHistory = 'saveHistory';
 String keyMaxTime = 'maxWatchTime';
 String keyDisableShorts = "disableShorts";
-
+String keyWatchHistory = 'watchHistory';
