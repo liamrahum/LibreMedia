@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last
 
+import 'package:LibreMedia/classes/fetch-data.dart';
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/screens/screens.dart';
 import 'package:LibreMedia/variables.dart';
@@ -129,7 +130,9 @@ class FutureVideoCard extends StatelessWidget {
             videoURL: data.videoURL,
             publishedText: data.publishedText,
           );
-        } else if (snapshot.hasError) return Text('${snapshot.error}');
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
         return const DummyVideoCard(displayThumbnail: true);
       },
     );
