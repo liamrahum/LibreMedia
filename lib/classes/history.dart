@@ -10,16 +10,17 @@ class WatchHistory {
 
   WatchHistory._internal();
 
-  Future<List<String>> getWatchHistory() async {
+  Future<Set<String>> getWatchHistory() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getStringList(keyWatchHistory) ?? [];
+    final history = prefs.getStringList(keyWatchHistory) ?? [];
+    return history.reversed.toSet();
   }
 
   Future<void> addToWatchHistory(String videoID) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    List<String> watchHistory = await getWatchHistory();
+    Set<String> watchHistory = await getWatchHistory();
     watchHistory.add(videoID);
-    prefs.setStringList(keyWatchHistory, watchHistory);
+    prefs.setStringList(keyWatchHistory, watchHistory.toList());
   }
 
   Future<void> clearWatchHistory() async {

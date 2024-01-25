@@ -12,8 +12,11 @@ class History extends StatelessWidget {
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const DummyVideoCard(displayThumbnail: true);
+        } else if (snapshot.hasError) {
+          return const Text("Error loading history");
         }
-        List<Widget> videos = snapshot.data!.map((child) => Text(child)).toList();
+        List<Widget> videos =
+            snapshot.data!.map((videoID) => FutureVideoCard(videoId: videoID)).toList();
 
         return ListView.builder(
           itemCount: videos.length,
