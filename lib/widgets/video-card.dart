@@ -2,6 +2,7 @@
 
 import 'package:LibreMedia/classes/fetch-data.dart';
 import 'package:LibreMedia/classes/history.dart';
+import 'package:LibreMedia/widgets/channel-card.dart';
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/screens/screens.dart';
 import 'package:LibreMedia/variables.dart';
@@ -138,7 +139,12 @@ class FutureVideoCard extends StatelessWidget {
             publishedText: data.publishedText,
           );
         } else if (snapshot.hasError) {
-          return Text('${snapshot.error}');
+          try {
+            //if Video is actually channel:
+            return FutureChannelCard(channelID: videoId);
+          } catch (e) {
+            return Text('${snapshot.error}');
+          }
         }
         return const DummyVideoCard(displayThumbnail: true);
       },

@@ -46,7 +46,7 @@ void _clearHistory() {
               );
             }),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               ElevatedButton(onPressed: _refreshPage, child: const Text("Refresh")),
               ElevatedButton(onPressed: _clearHistory, child: const Text("Clear history")),
