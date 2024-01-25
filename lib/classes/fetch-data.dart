@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:LibreMedia/classes/video.dart';
 import 'channel.dart';
@@ -31,6 +32,28 @@ Future<List<String>> fetchVideoList(String query)  async {
     videos.add(jsonBody[i]["videoId"]);
   }
   return videos;
+}
+
+Future<List<String>> fetchSearchQuery(String query) async 
+{
+  List<String> result = [];
+  if(query=="")return result;
+  
+  final response = await http.get(Uri.parse('${await SettingsManager().getInstanceAPI()}search?q=$query&type=channel'));
+  var responseBody = utf8.decode(response.bodyBytes);
+  if (response.statusCode != 200) {
+    throw Exception('Failed to load videos');
+  }
+  
+  int i = 0;
+  List jsonBody = jsonDecode(responseBody);
+  
+  for(i = 0; i < (jsonBody.length < 2 ? jsonBody.length : 2);i++)
+  {
+    result.add(jsonBody[i]["authorId"]);
+  }
+  result += await fetchVideoList(query);
+  return result;
 }
 
 Future<List<String>> fetchChannelVideos(String channelId) async

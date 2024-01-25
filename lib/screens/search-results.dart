@@ -8,7 +8,7 @@ class SearchResultVideoCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: fetchVideoList(prompt),
+      future: fetchSearchQuery(prompt),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
