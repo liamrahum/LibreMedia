@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, use_build_context_synchronously, curly_braces_in_flow_control_structures
 
+import 'package:LibreMedia/classes/fetch-data.dart';
 import 'package:flutter/material.dart';
-import 'package:LibreMedia/classes/video.dart';
 import 'package:LibreMedia/variables.dart';
 import 'package:LibreMedia/widgets/channel-card.dart';
 import 'package:LibreMedia/widgets/video-card.dart';
@@ -31,7 +31,6 @@ class _HomeState extends State<Home> {
               const FutureChannelCard(channelID: "UCg6gPGh8HU2U01vaFCAsvmQ"),
               const FutureChannelCard(channelID: "UC5qDet6sa6rODi7t6wfpg8g"),
               const FutureChannelCard(channelID: "UCux-_Fze30tFuI_5CArwSmg"),
-              
             ],
           ),
         ),

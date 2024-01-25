@@ -2,6 +2,7 @@
 
 // ignore_for_file: curly_braces_in_flow_control_structures
 
+import 'package:LibreMedia/classes/fetch-data.dart';
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/classes/channel.dart';
 import 'package:LibreMedia/screens/screens.dart';
