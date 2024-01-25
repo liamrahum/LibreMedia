@@ -1,7 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:LibreMedia/classes/fetch-data.dart';
-import 'package:LibreMedia/classes/history.dart';
+import 'package:LibreMedia/classes/watch-history.dart';
 import 'package:LibreMedia/widgets/channel-card.dart';
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/screens/screens.dart';

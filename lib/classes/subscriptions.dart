@@ -23,6 +23,13 @@ class Subscriptions {
     prefs.setStringList(keySubscriptions, subs.toList());
   }
 
+  Future<void> removeSubscription(String channelID) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    Set<String> subs = await getSubscriptions();
+    subs.remove(channelID);
+    prefs.setStringList(keySubscriptions, subs.toList());
+  }
+
   Future<void> clearSubscriptions() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setStringList(keySubscriptions, []);
