@@ -1,6 +1,7 @@
 // ignore_for_file: sort_child_properties_last
 
 import 'package:LibreMedia/classes/fetch-data.dart';
+import 'package:LibreMedia/classes/history.dart';
 import 'package:flutter/material.dart';
 import 'package:LibreMedia/screens/screens.dart';
 import 'package:LibreMedia/variables.dart';
@@ -50,6 +51,7 @@ class VideoCard extends StatelessWidget {
       required this.channelName,
       required this.views,
       this.displayThumbnail = true,
+      this.videoID = "",
       this.thumbnailURL = "",
       this.videoURL = "",
       this.videoDescription = "",
@@ -64,6 +66,7 @@ class VideoCard extends StatelessWidget {
 
   final String videoDescription;
   final String videoURL;
+  final String videoID;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +74,7 @@ class VideoCard extends StatelessWidget {
       padding: const EdgeInsets.all(25),
       child: GestureDetector(
         onTap: () async {
-                    
+          WatchHistory().addToWatchHistory(videoID);          
           await Navigator.of(context).push(
             MaterialPageRoute(
                 builder: (context) => Scaffold(
@@ -131,6 +134,7 @@ class FutureVideoCard extends StatelessWidget {
             views: data.viewCount,
             videoDescription: data.videoDescription,
             videoURL: data.videoURL,
+            videoID: videoId,
             publishedText: data.publishedText,
           );
         } else if (snapshot.hasError) {
