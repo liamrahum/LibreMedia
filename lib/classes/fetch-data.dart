@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:LibreMedia/classes/subscriptions.dart';
 import 'package:LibreMedia/classes/video.dart';
 import 'channel.dart';
 import 'package:LibreMedia/classes/settings-manager.dart';
@@ -84,7 +85,9 @@ Future<Channel> fetchChannel(String videoId) async {
   if (response.statusCode != 200) {
     throw Exception('Failed to load video');
   }
-  return Channel.fromJson(jsonDecode(responseBody));
+  Map<String, dynamic> channelData = jsonDecode(responseBody);
+  channelData['isSubscribed'] = (await Subscriptions().getSubscriptions()).contains(channelData['authorId']);
+  return Channel.fromJson(channelData);
 }
 
 //TODO: fetchChannelVideos - gets channel name and returns list of video IDs

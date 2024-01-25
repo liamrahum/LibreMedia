@@ -34,3 +34,4 @@ String keySaveHistory = 'saveHistory';
 String keyMaxTime = 'maxWatchTime';
 String keyDisableShorts = "disableShorts";
 String keyWatchHistory = 'watchHistory';
+String keySubscriptions = 'subscriptions';

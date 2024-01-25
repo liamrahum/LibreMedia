@@ -1,4 +1,4 @@
-import 'package:LibreMedia/classes/history.dart';
+import 'package:LibreMedia/classes/watch-history.dart';
 import 'package:LibreMedia/widgets/video-card.dart';
 import 'package:flutter/material.dart';
 
