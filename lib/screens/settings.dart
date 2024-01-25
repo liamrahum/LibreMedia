@@ -48,7 +48,11 @@ class _SettingsState extends State<Settings> {
       future: getAllInstances(),
       builder: (context, snapshot) {
         List<DropdownMenuItem<String>> menuItems = [];
-
+        if (!snapshot.hasData) {
+          return const CircularProgressIndicator();
+        } else if (snapshot.hasError){
+          return const Text("Error loading instances");
+        }
         snapshot.data?.forEach((element) =>
             (!element[0].toString().contains('onion') &&
                     !element[0].toString().contains('i2p'))
